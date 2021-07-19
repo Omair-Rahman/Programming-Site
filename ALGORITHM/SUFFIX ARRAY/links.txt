@@ -1,0 +1,10 @@
+https://ankurkkhurana.me/2012/07/01/suffix-arrays-a-simple-tutorial/
+
+http://www.geeksforgeeks.org/suffix-array-set-1-introduction/
+
+PROBLEM LIST:
+https://www.quora.com/What-are-some-of-the-good-sources-to-understand-suffix-tree-suffix-array-and-their-implementation
+
+TOPCODER FORUM:
+https://apps.topcoder.com/forums/?module=RevisionHistory&messageID=1171511
+http://codeforces.com/blog/entry/12796

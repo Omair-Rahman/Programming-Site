@@ -1,0 +1,103 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <queue>
+#include <stack>
+#include <string>
+#include <cstring>
+#include <cmath>
+#include <climits>
+#include <algorithm>
+#include <cstdio>
+#include <iomanip>
+#include <sstream>
+#include <fstream>
+#include <windows.h>
+#include <conio.h>
+using namespace std;
+
+#define s(n)          scanf("%d",&n)
+#define loop(i,a,b)    for(int i=int(a);i<int(b);i++)
+vector<int> edge[100], cost[100];
+vector<int>::iterator it;
+const int infinity = 1000000000;
+
+//edge[i][j] = jth node connected with i
+//cost[i][j] = cost of that edge
+
+int bfs(int source, int destination,int V) {
+
+    int d[100],path[100];
+    for(int i=0; i<100; i++) d[i] = infinity;
+
+    queue<int> q;
+    q.push( source );
+    d[ source ] = 0;
+
+    while( !q.empty() ) {
+        int u = q.front();
+        q.pop();
+        int ucost = d[ u ];
+
+        for(int i=0; i<edge[u].size(); i++) {
+            int v = edge[u][i];
+            int vcost = cost[ u ][i] + ucost;
+
+            // updating - this part is also called relaxing
+            if( d[v] > vcost ) {
+                d[v] = vcost;
+                path[v]=u;
+                q.push( v );
+            }
+        }
+    }
+    return d[ destination ];
+}
+
+
+int main()
+{
+    //
+    int I,K,M,V,E,n1,n2,x;
+    s(V);
+    s(E);
+    loop(I,1,E+1)
+    {
+        s(n1);
+        s(n2);
+        s(x);
+        edge[n1].push_back(n2);
+        edge[n2].push_back(n1);
+        cost[n1].push_back(x);
+        cost[n2].push_back(x);
+    }
+    cout<<bfs(1,6,V)<<endl;
+
+    vector<int>::iterator it;
+//    loop(I,1,V+1)
+//    {cout<<I;
+//        for(it=edge[I].begin();it<edge[I].end();it++)
+//    {
+//        cout<<"->"<<*it;
+//    }
+//    cout<<endl;
+//    }
+
+    return 0;
+}
+
+
+
+
+
+6 8
+1 2 1
+1 4 3
+2 6 1 
+2 5 2
+3 2 5
+3 4 1
+4 5 3
+5 6 4
